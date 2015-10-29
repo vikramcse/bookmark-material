@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div ng-cloak>
+    <md-content class="md-padding" layout="row" layout-wrap>
+        <md-card style="width: 315px;" ng-repeat="user in vm.users">
+            <md-card-content>
+                <h2 class="md-title">{{user.name}}</h2>
+
+                <p>
+                    {{user.description}}
+                </p>
+            </md-card-content>
+            <div class="md-actions" layout="row" layout-align="end center">
+                <md-button class="md-primary">Edit</md-button>
+                <md-button class="md-warn">Delete</md-button>
+            </div>
+            <md-subheader class="md-primary">
+                Tags
+            </md-subheader>
+        </md-card>
+
+    </md-content>
+</div>
+</body>
+</html>

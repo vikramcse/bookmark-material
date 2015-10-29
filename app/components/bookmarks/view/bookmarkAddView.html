@@ -1,0 +1,28 @@
+<div layout="column" ng-cloak>
+    <md-content layout-padding>
+        <form name="addBookmark">
+            <md-input-container>
+                <label>Url</label>
+                <input required name="url" type="url" ng-model="vm.url" novalidate>
+
+                <div ng-messages="addBookmark.url.$error && addBookmark.url.$dirty">
+                    <div ng-message="required">This is required.</div>
+                </div>
+            </md-input-container>
+            <br/>
+
+            <md-chips
+                    ng-model="vm.tags"
+                    readonly="false"
+                    placeholder="Enter a tag"
+                    md-on-append="vm.newTag($chip)"></md-chips>
+            <br/>
+
+            <md-button
+                    class="md-raised md-primary"
+                    ng-click="vm.addBookmark()"
+                    ng-disabled="addBookmark.$invalid">Add
+            </md-button>
+        </form>
+    </md-content>
+</div>
