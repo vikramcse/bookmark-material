@@ -1,29 +1,23 @@
-(function() {
+(function () {
     "use strict";
 
     angular
         .module("bookmarkApp")
-        .controller("bookmarkListCtrl", bookmarkListCtrl);
+        .controller("bookmarkListCtrl", ["bookmarkResource","$state", bookmarkListCtrl]);
 
-    function bookmarkListCtrl() {
+    function bookmarkListCtrl(bookmarkResource, $state) {
         var vm = this;
-        vm.users = [
-            {
-                name:"vikram",
-                description:"vikram jadhav is good boy"
-            },
-            {
-                name:"Amey",
-                description:"vikram jadhav is good boy"
-            },
-            {
-                name:"chakroo",
-                description:"vikram jadhav is good boy"
-            },
-            {
-                name:"kaushik",
-                description:"vikram jadhav is good boy"
-            }
-        ];
-    };
+        var bookmarks = bookmarkResource;
+
+        bookmarks.query(function (data) {
+            vm.users = data;
+        });
+
+        vm.delete = function (user) {
+            user.$remove({"bookmarkId" : user._id}, function() {
+                console.log("deleted");
+            });
+        }
+
+    }
 }());

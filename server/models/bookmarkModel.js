@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var bookmarkModel = new Schema({
     title: String,
+    description: String,
     url: String
 });
 

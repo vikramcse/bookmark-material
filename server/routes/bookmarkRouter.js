@@ -13,7 +13,8 @@ var routes = function (Bookmark) {
         .get(function (req, res) {
             var id = req.params.bookmarkId;
             Bookmark.findById(id, function (err, bookmark) {
-                if (err) res.status(500).send(err);
+                if (err)
+                    res.status(500).send(err);
 
                 // object of all the users
                 res.json(bookmark);

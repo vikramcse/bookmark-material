@@ -10,15 +10,17 @@ var db = mongoose.connect("mongodb://localhost/bookmarkData");
 var Bookmark = require("./server/models/bookmarkModel.js");
 var bookmarkRouter = require("./server/routes/bookmarkRouter.js")(Bookmark);
 
-app.use(bodyParser.urlencoded({extended:true}))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 
+app.use(express.static(__dirname + '/app'));
+app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
 app.use('/api/bookmarks', bookmarkRouter);
 
 app.get("/", function (req, res) {
-    res.send("Welcome to my API Yahoo");
+    res.sendfile("index.html");
 });
 
 app.listen(port, function () {

@@ -7,22 +7,22 @@
 <body>
 <div ng-cloak>
     <md-content class="md-padding" layout="row" layout-wrap>
-        <md-card style="width: 315px;" ng-repeat="user in vm.users">
-            <md-card-content>
-                <h2 class="md-title">{{user.name}}</h2>
+        <div ng-repeat="user in vm.users">
+            <md-card style="width: 315px;">
+                <md-card-content>
+                    <h2 class="md-title">{{user.title}}</h2>
 
-                <p>
-                    {{user.description}}
-                </p>
-            </md-card-content>
-            <div class="md-actions" layout="row" layout-align="end center">
-                <md-button class="md-primary">Edit</md-button>
-                <md-button class="md-warn">Delete</md-button>
-            </div>
-            <md-subheader class="md-primary">
-                Tags
-            </md-subheader>
-        </md-card>
+                    <p>
+                        {{user.description}}
+                    </p>
+                </md-card-content>
+
+                <div class="md-actions" layout="row" layout-align="end center">
+                    <md-button class="md-primary" target="_blank" ng-href="{{user.url}}">Open</md-button>
+                    <md-button class="md-warn" ng-click="vm.delete(user)">Delete</md-button>
+                </div>
+            </md-card>
+        </div>
 
     </md-content>
 </div>

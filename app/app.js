@@ -1,7 +1,9 @@
 (function() {
     "use strict";
 
-    var app = angular.module("bookmarkApp", ["ui.router", "ngMaterial", "ngMdIcons", "ngMessages"]);
+    var app = angular.module("bookmarkApp",
+        ["ui.router", "ngMaterial", "ngMdIcons", "ngMessages", "common.services"]);
+
     app.config(["$stateProvider",
         "$urlRouterProvider", "$mdThemingProvider", "$mdIconProvider",
         function($stateProvider, $urlRouterProvider, $mdThemingProvider, $mdIconProvider) {
@@ -11,16 +13,16 @@
             $stateProvider
                 .state("home", {
                     url:"/",
-                    templateUrl:"app/home.html"
+                    templateUrl:"home.html"
                 })
                 .state("add", {
                     url:"/new",
-                    templateUrl:"app/components/bookmarks/view/bookmarkAddView.html",
+                    templateUrl:"components/bookmarks/view/bookmarkAddView.html",
                     controller:"bookmarkAddCtrl as vm"
                 })
                 .state("bookmarkList", {
                     url:"/bookmarks",
-                    templateUrl:"app/components/bookmarks/view/bookmarksListView.html",
+                    templateUrl:"components/bookmarks/view/bookmarksListView.html",
                     controller:"bookmarkListCtrl as vm"
                 });
 

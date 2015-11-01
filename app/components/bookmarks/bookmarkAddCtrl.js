@@ -12,6 +12,8 @@
         vm.addBookmark = function() {
             console.log(vm.url);
             console.log(vm.tags);
+
+
         };
 
         vm.newTag = function(tag) {
