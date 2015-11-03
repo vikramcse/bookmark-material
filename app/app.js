@@ -35,8 +35,19 @@
                 .icon("twitter"    , "app/assets/svg/twitter.svg"     , 512)
                 .icon("phone"      , "app/assets/svg/phone.svg"       , 512);
 
+            var customBlueMap = $mdThemingProvider.extendPalette('light-blue', {
+                'contrastDefaultColor': 'light',
+                'contrastDarkColors': ['50'],
+                '50': 'ffffff'
+            });
+            $mdThemingProvider.definePalette('customBlue', customBlueMap);
             $mdThemingProvider.theme('default')
-                .primaryPalette('blue')
-                .accentPalette('red');
+                .primaryPalette('customBlue', {
+                    'default': '500',
+                    'hue-1': '50'
+                })
+                .accentPalette('pink');
+            $mdThemingProvider.theme('input', 'default')
+                .primaryPalette('grey')
     }]);
 }());

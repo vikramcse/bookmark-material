@@ -12,21 +12,50 @@
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
     <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css"/>
     <link rel="stylesheet" href="assets/app.css"/>
+
 </head>
 
 <body class="ng-cloak" ng-app="bookmarkApp">
 <div layout="column">
-    <md-toolbar layout="row">
+    <md-toolbar layout="row" ng-show="!showSearch">
         <div class="md-toolbar-tools">
-            <h3>Bookmark Manager</h3>
+            <a href="#/bookmarks">
+                <h3>Bookmark Manager</h3>
+            </a>
+            <span flex></span>
+            <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+                <ng-md-icon icon="search"></ng-md-icon>
+            </md-button>
         </div>
     </md-toolbar>
+    <md-toolbar class="md-hue-1" ng-show="showSearch">
+        <div class="md-toolbar-tools">
+            <md-button ng-click="showSearch = !showSearch" aria-label="Back">
+                <ng-md-icon icon="arrow_back"></ng-md-icon>
+            </md-button>
+            <h3 flex="10">
+                Back
+            </h3>
+            <md-input-container md-theme="input" flex>
+                <label>&nbsp;</label>
+                <input ng-model="vm.search" placeholder="enter search">
+            </md-input-container>
+
+            <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+                <ng-md-icon icon="search"></ng-md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-button class="md-fab md-fab-bottom-right" aria-label="Add" href="#/new">
+        <ng-md-icon size="35" icon="add"></ng-md-icon>
+    </md-button>
     <div flex class="container">
         <div ui-view></div>
     </div>
 </div>
-
 </body>
+
 <!--library scripts-->
 <script src="/bower_components/angular/angular.js"></script>
 <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>

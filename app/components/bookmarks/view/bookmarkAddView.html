@@ -1,28 +1,31 @@
-<div layout="column" ng-cloak>
-    <md-content layout-padding>
-        <form name="addBookmark">
-            <md-input-container>
-                <label>Url</label>
-                <input required name="url" type="url" ng-model="vm.url" novalidate>
+<div layout="row" layout-align="center center" ng-cloak>
+    <div flex="50">
+        <md-content layout-padding>
+            <form name="addBookmark">
+                <br/>
+                <md-input-container>
+                    <label>Web Address</label>
+                    <input required name="url" type="url" ng-model="vm.url" novalidate>
 
-                <div ng-messages="addBookmark.url.$error && addBookmark.url.$dirty">
-                    <div ng-message="required">This is required.</div>
-                </div>
-            </md-input-container>
-            <br/>
+                    <div ng-messages="addBookmark.url.$error && addBookmark.url.$dirty">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
 
-            <md-chips
-                    ng-model="vm.tags"
-                    readonly="false"
-                    placeholder="Enter a tag"
-                    md-on-append="vm.newTag($chip)"></md-chips>
-            <br/>
+                <md-chips
+                        ng-model="vm.tags"
+                        readonly="false"
+                        md-on-append="vm.newTag($chip)"
+                        secondary-placeholder="Tags">
+                </md-chips>
+                <br/>
 
-            <md-button
-                    class="md-raised md-primary"
-                    ng-click="vm.addBookmark()"
-                    ng-disabled="addBookmark.$invalid">Add
-            </md-button>
-        </form>
-    </md-content>
+                <md-button
+                        class="md-raised md-primary"
+                        ng-click="vm.addBookmark()"
+                        ng-disabled="addBookmark.$invalid">Add
+                </md-button>
+            </form>
+        </md-content>
+    </div>
 </div>
